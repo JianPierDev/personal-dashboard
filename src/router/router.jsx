@@ -4,6 +4,7 @@ import { TodoApp } from "../app/todo-app/todo-app";
 import { Pokemons } from "../app/pokemons/pokemons";
 import { Dashboard } from "../common/pages/dasboard";
 import { RickAndMorty } from "../app/rick-and-morty/rick-and-morty";
+import { ZustandExample } from "../app/zustand-example/zustand-example";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
       {
         path: "todo-app",
         Component: TodoApp,
+      },
+      {
+        path: "zustand-example",
+        Component: ZustandExample,
       },
       {
         path: "rick-and-morty",

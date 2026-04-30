@@ -6,11 +6,16 @@ export const projects = [
   },
   {
     id: 2,
+    name: "Zustand Example",
+    basePath: "zustand-example"
+  },
+  {
+    id: 3,
     name: "Rick and Morty",
     basePath: "rick-and-morty",
   },
   {
-    id: 3,
+    id: 4,
     name: "Pokemons",
     basePath: "pokemons",
   },

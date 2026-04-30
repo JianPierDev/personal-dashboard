@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { User } from "./user";
 import { Link } from "react-router";
+import { useUser } from "../../providers/use-user";
+
 
 export function Sidebar({ projects }) {
+  const { user, setUser } = useUser()
+
   return (
     <aside className="bg-slate-800/30 rounded-2xl p-8 w-72">
       <div className="flex flex-col justify-between h-full">
