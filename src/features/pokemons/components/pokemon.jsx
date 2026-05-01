@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { useGetPokemonsDetails } from "../hooks/use-get-pokemons-details";
 import { PokemonAbility } from "./pokemon-ability";
 import { PokemonType } from "./pokemon-type";
@@ -15,9 +16,15 @@ const typeColors = {
   normal: "bg-gray-400 text-black",
 };
 
-export function Pokemon({ pokemon }) {
+export function Pokemon({ pokemon, withNavigate = true }) {
   const { name, url } = pokemon;
   const { details, loading, error } = useGetPokemonsDetails(url);
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    if(!withNavigate) return
+
+    navigate(`/pokemons/character/${id}`);
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -25,7 +32,10 @@ export function Pokemon({ pokemon }) {
   const { height, weight, sprites, types, id, abilities } = details;
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-be from-slate-800 to-slate-900 border border-slate-700">
+    <div
+      className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-gradient-to-be from-slate-800 to-slate-900 border border-slate-700 cursor-pointer"
+      onClick={handleNavigate}
+    >
       <div className="flex justify-between items-center px-4 py-2 bg-slate-700/40">
         <h2 className="text-lg font-bold capitalize">{name}</h2>
         <span className="text-sm text-slate-400">#{id}</span>

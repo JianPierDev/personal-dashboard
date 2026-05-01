@@ -1,12 +1,22 @@
 import { Heart, Mars } from "lucide-react";
 import { DisplayGender } from "../utils/display-gender";
+import { DisplayStatus } from "../utils/display-status";
+import { useNavigate } from "react-router";
 
-export function Characters({ character }) {
+export function CharacterItem({ character, withNavigation = true }) {
   const { id, name, status, species, type, gender, origin, location, image } =
     character;
 
+  const navigate = useNavigate()
+  
+  const handleNavigate = () => {
+    if(!withNavigation) return
+
+    navigate(`/rick-and-morty/character/${id}`)
+  }
+
   return (
-    <div className="rounded-2xl overflow-hidden border border-slate-700 cursor-pointer hover:border-sky-600 transition-all duration-300">
+    <div className={`"rounded-2xl overflow-hidden border border-slate-700 hover:border-sky-600 transition-all duration-300 ${withNavigation && "cursor-pointer"}`} onClick={handleNavigate}>
       <div className="h-60 overflow-hidden">
         <img className="w-100 transform scale-100 hover:scale-105 transition-all duration-300 ease-in-out" src={image} alt={name} />
       </div>
@@ -17,7 +27,7 @@ export function Characters({ character }) {
                 <DisplayGender gender={gender}/>
             </p>
             <p className="flex gap-2">Status: 
-                <Heart className="text-red-500 fill-red-500" />
+                <DisplayStatus status={status} />
             </p>
         </div>
         <div className="flex flex-col gap-2 text-slate">
