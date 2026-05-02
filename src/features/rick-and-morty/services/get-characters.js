@@ -1,9 +1,11 @@
-export const getCharacters = async () => {
-    const response = await fetch("https://rickandmortyapi.com/api/character")
+import axios from "axios";
 
-    if(!response.ok) {
-        throw new Error("An error ocurred while requesting the information")
-    }
+const API_URL = "https://rickandmortyapi.com/api/character";
 
-    return response.json()
-}
+export const getCharacters = async ({name = ""}) => {
+  const response = await axios.get(API_URL, {
+    params: { name },
+  });
+
+  return response.data;
+};

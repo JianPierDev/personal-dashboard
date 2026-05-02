@@ -16,7 +16,7 @@ export function CharacterItem({ character, withNavigation = true }) {
   }
 
   return (
-    <div className={`"rounded-2xl overflow-hidden border border-slate-700 hover:border-sky-600 transition-all duration-300 ${withNavigation && "cursor-pointer"}`} onClick={handleNavigate}>
+    <div className={`h-130 rounded-2xl overflow-hidden border border-slate-700 hover:border-sky-600 transition-all duration-300 ${withNavigation && "cursor-pointer"}`} onClick={handleNavigate}>
       <div className="h-60 overflow-hidden">
         <img className="w-100 transform scale-100 hover:scale-105 transition-all duration-300 ease-in-out" src={image} alt={name} />
       </div>
