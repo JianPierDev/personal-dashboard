@@ -1,9 +1,13 @@
-export const getPokemons = async () => {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon")
+import axios from "axios";
 
-    if(!response.ok) {
-        throw new Error("An error ocurred while requesting the information")
-    }
+const API_URL = "https://pokeapi.co/api/v2/pokemon";
 
-    return response.json()
-}
+export const getPokemons = async ({ name = "" }) => {
+  const response = await axios.get(API_URL)
+
+  if( name ) {
+    return { results : [response.data]}
+  }
+
+  return response.data;
+};
